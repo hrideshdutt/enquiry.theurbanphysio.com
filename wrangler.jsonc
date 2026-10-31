@@ -1,7 +1,0 @@
-{
-  "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "enquiry-theurbanphysio-com",
-  "compatibility_date": "2026-10-31",
-  "pages_build_output_dir": "."
-}
-
