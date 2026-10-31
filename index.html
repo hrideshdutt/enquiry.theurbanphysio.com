@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Patient Consultation & Enquiry Form | The Urban Physio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%230d9488'><path d='M4.5 10.5C3.67 10.5 3 11.17 3 12s.67 1.5 1.5 1.5h15c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5h-15z'/><path d='M10.5 4.5C10.5 3.67 11.17 3 12 3s1.5.67 1.5 1.5v15c0 .83-.67 1.5-1.5 1.5s-1.5-.67-1.5-1.5v-15z'/></svg>">
+</head>
+<body>
+  <div class="page-background">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+  </div>
+
+  <main class="container">
+    <!-- Header Card -->
+    <header class="brand-header">
+      <div class="logo-badge">
+        <svg class="medical-cross" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M19 10.5h-5.5V5c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v5.5H5c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5h5.5V19c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5v-5.5H19c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5z"/>
+        </svg>
+      </div>
+      <div class="brand-info">
+        <span class="brand-tag">The Urban Physio</span>
+        <h1 class="brand-title">Patient Intake & Enquiry Form</h1>
+        <p class="brand-desc">Please share your health details and appointment preference below so our physiotherapy specialist can review your case and prepare your consultation.</p>
+      </div>
+    </header>
+
+    <!-- Main Form -->
+    <form id="patientEnquiryForm" novalidate>
+
+      <!-- Section 1: Patient Personal Information -->
+      <section class="form-section">
+        <div class="section-heading">
+          <span class="step-num">01</span>
+          <div>
+            <h2>Personal Information</h2>
+            <p>Basic details to register your patient record</p>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <!-- Full Name -->
+          <div class="form-group">
+            <label for="fullName">Full Name <span class="req">*</span></label>
+            <div class="input-wrapper">
+              <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+              <input type="text" id="fullName" name="fullName" placeholder="e.g. Rahul Sharma" required minlength="3">
+            </div>
+            <span class="error-msg">Please enter patient's full name (min 3 characters).</span>
+          </div>
+
+          <!-- Phone Number -->
+          <div class="form-group">
+            <label for="phone">Phone / WhatsApp Number <span class="req">*</span></label>
+            <div class="input-wrapper">
+              <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              <input type="tel" id="phone" name="phone" placeholder="10-digit mobile number" required pattern="[0-9]{10}">
+            </div>
+            <span class="error-msg">Please enter a valid 10-digit phone number.</span>
+          </div>
+        </div>
+
+        <div class="grid-3">
+          <!-- Email Address -->
+          <div class="form-group grid-span-email">
+            <label for="email">Email Address <span class="req">*</span></label>
+            <div class="input-wrapper">
+              <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              <input type="email" id="email" name="email" placeholder="e.g. rahul@example.com" required>
+            </div>
+            <span class="error-msg">Please enter a valid email address.</span>
+          </div>
+
+          <!-- Age -->
+          <div class="form-group">
+            <label for="age">Age <span class="req">*</span></label>
+            <input type="number" id="age" name="age" placeholder="Age" min="1" max="120" required>
+            <span class="error-msg">Enter valid age.</span>
+          </div>
+
+          <!-- Gender -->
+          <div class="form-group">
+            <label for="gender">Gender <span class="req">*</span></label>
+            <select id="gender" name="gender" required>
+              <option value="" disabled selected>Select</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Other">Other / Prefer not to say</option>
+            </select>
+            <span class="error-msg">Select gender.</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 2: Full Address -->
+      <section class="form-section">
+        <div class="section-heading">
+          <span class="step-num">02</span>
+          <div>
+            <h2>Address Details</h2>
+            <p>Required for clinic records & home-visit eligibility</p>
+          </div>
+        </div>
+
+        <!-- House / Flat / Street -->
+        <div class="form-group">
+          <label for="streetAddress">Flat / House No., Building & Street <span class="req">*</span></label>
+          <input type="text" id="streetAddress" name="streetAddress" placeholder="e.g. Flat 304, Green Meadows, 5th Main Road" required>
+          <span class="error-msg">Please enter street address.</span>
+        </div>
+
+        <div class="grid-3">
+          <!-- Area / Locality / Landmark -->
+          <div class="form-group">
+            <label for="area">Locality / Landmark <span class="req">*</span></label>
+            <input type="text" id="area" name="area" placeholder="e.g. HSR Layout Sector 2" required>
+            <span class="error-msg">Enter locality or landmark.</span>
+          </div>
+
+          <!-- City -->
+          <div class="form-group">
+            <label for="city">City <span class="req">*</span></label>
+            <input type="text" id="city" name="city" placeholder="e.g. Bengaluru" required>
+            <span class="error-msg">Enter city.</span>
+          </div>
+
+          <!-- Pincode -->
+          <div class="form-group">
+            <label for="pincode">Pincode <span class="req">*</span></label>
+            <input type="text" id="pincode" name="pincode" placeholder="6-digit Pincode" pattern="[0-9]{6}" maxlength="6" required>
+            <span class="error-msg">Enter valid 6-digit pincode.</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 3: Medical Issue & Past History -->
+      <section class="form-section">
+        <div class="section-heading">
+          <span class="step-num">03</span>
+          <div>
+            <h2>Health Concern & Medical History</h2>
+            <p>Help the physician understand what you are experiencing</p>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <!-- Primary Concern Category -->
+          <div class="form-group">
+            <label for="concernCategory">Primary Problem Area <span class="req">*</span></label>
+            <select id="concernCategory" name="concernCategory" required>
+              <option value="" disabled selected>Select your condition / pain area</option>
+              <option value="Lower Back Pain / Sciatica">Lower Back Pain / Sciatica</option>
+              <option value="Neck & Cervical Pain">Neck & Cervical Pain</option>
+              <option value="Knee / Joint Pain">Knee / Joint Pain</option>
+              <option value="Shoulder / Frozen Shoulder">Shoulder / Frozen Shoulder</option>
+              <option value="Sports Injury / Ligament Sprain">Sports Injury / Ligament Sprain</option>
+              <option value="Post-Surgery Rehabilitation">Post-Surgery Rehabilitation</option>
+              <option value="Neurological / Stroke Rehab">Neurological / Stroke Rehab</option>
+              <option value="Postural Correction / Ergonomics">Postural Correction / Ergonomics</option>
+              <option value="Other">Other Chronic / Acute Condition</option>
+            </select>
+            <span class="error-msg">Please select primary problem area.</span>
+          </div>
+
+          <!-- Duration of Problem -->
+          <div class="form-group">
+            <label for="duration">Since when do you have this problem? <span class="req">*</span></label>
+            <select id="duration" name="duration" required>
+              <option value="" disabled selected>Select duration</option>
+              <option value="Less than 1 week (Acute)">Less than 1 week (Acute)</option>
+              <option value="1 to 4 weeks">1 to 4 weeks</option>
+              <option value="1 to 6 months">1 to 6 months</option>
+              <option value="More than 6 months (Chronic)">More than 6 months (Chronic)</option>
+              <option value="Recurring / On & Off">Recurring / Comes and goes</option>
+            </select>
+            <span class="error-msg">Please select how long you've had this.</span>
+          </div>
+        </div>
+
+        <!-- Problem Description -->
+        <div class="form-group">
+          <label for="problemDescription">Describe your problem & symptoms in detail <span class="req">*</span></label>
+          <textarea id="problemDescription" name="problemDescription" rows="4" placeholder="What symptoms are you feeling? (e.g., sharp pain while bending, stiffness in morning, numbness/tingling, difficulty walking, etc.)" required minlength="10"></textarea>
+          <span class="error-msg">Please provide at least a few words describing your pain or symptoms.</span>
+        </div>
+
+        <!-- Pain Severity Scale -->
+        <div class="form-group">
+          <label>Pain Severity Level (1 = Mild discomfort, 10 = Severe/Unbearable): <span id="painValue" class="pain-badge">5 / 10 (Moderate)</span></label>
+          <div class="slider-container">
+            <input type="range" id="painScale" name="painScale" min="1" max="10" value="5" class="pain-slider">
+            <div class="slider-labels">
+              <span>1 (Mild)</span>
+              <span>5 (Moderate)</span>
+              <span>10 (Severe)</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <!-- Past History -->
+          <div class="form-group">
+            <label for="pastHistory">Any Past Medical / Surgical History? <span class="req">*</span></label>
+            <textarea id="pastHistory" name="pastHistory" rows="3" placeholder="Mention any past surgeries, fractures, arthritis, diabetes, BP, slip disc, or write 'None' if healthy." required></textarea>
+            <span class="error-msg">Please mention your past history or write 'None'.</span>
+          </div>
+
+          <!-- Current Medication / Previous Treatments -->
+          <div class="form-group">
+            <label for="currentMedication">Ongoing Medicines or Previous Physio Treatments</label>
+            <textarea id="currentMedication" name="currentMedication" rows="3" placeholder="Any pain relievers, recent X-ray/MRI done, or ongoing therapy? (Optional)"></textarea>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 4: Appointment Preference -->
+      <section class="form-section">
+        <div class="section-heading">
+          <span class="step-num">04</span>
+          <div>
+            <h2>Appointment Preference</h2>
+            <p>Pick your preferred mode, date, and convenient time slot</p>
+          </div>
+        </div>
+
+        <!-- Consultation Mode -->
+        <div class="form-group">
+          <label class="block-label">Consultation Mode <span class="req">*</span></label>
+          <div class="mode-selector">
+            <label class="radio-card">
+              <input type="radio" name="consultationMode" value="Clinic Visit" checked>
+              <div class="card-inner">
+                <span class="card-title">🏥 Clinic Visit</span>
+                <span class="card-desc">Visit The Urban Physio centre</span>
+              </div>
+            </label>
+
+            <label class="radio-card">
+              <input type="radio" name="consultationMode" value="Home Visit">
+              <div class="card-inner">
+                <span class="card-title">🏠 Home Visit</span>
+                <span class="card-desc">Doctor visits your residence</span>
+              </div>
+            </label>
+
+            <label class="radio-card">
+              <input type="radio" name="consultationMode" value="Online Consultation">
+              <div class="card-inner">
+                <span class="card-title">💻 Online Video</span>
+                <span class="card-desc">Live 1-on-1 Tele-consultation</span>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <div class="grid-3">
+          <!-- Date -->
+          <div class="form-group">
+            <label for="preferredDate">Preferred Date <span class="req">*</span></label>
+            <input type="date" id="preferredDate" name="preferredDate" required>
+            <span class="error-msg">Please select appointment date.</span>
+          </div>
+
+          <!-- Day of Week (Auto calculated from date) -->
+          <div class="form-group">
+            <label for="preferredDay">Day of Week</label>
+            <input type="text" id="preferredDay" name="preferredDay" readonly placeholder="Calculated automatically" class="readonly-input">
+          </div>
+
+          <!-- Time Slot -->
+          <div class="form-group">
+            <label for="timeSlot">Preferred Time Slot <span class="req">*</span></label>
+            <select id="timeSlot" name="timeSlot" required>
+              <option value="" disabled selected>Select time slot</option>
+              <optgroup label="Morning (8:00 AM - 12:00 PM)">
+                <option value="08:00 AM - 09:00 AM">08:00 AM - 09:00 AM</option>
+                <option value="09:00 AM - 10:00 AM">09:00 AM - 10:00 AM</option>
+                <option value="10:00 AM - 11:00 AM">10:00 AM - 11:00 AM</option>
+                <option value="11:00 AM - 12:00 PM">11:00 AM - 12:00 PM</option>
+              </optgroup>
+              <optgroup label="Afternoon (12:00 PM - 04:00 PM)">
+                <option value="12:00 PM - 01:00 PM">12:00 PM - 01:00 PM</option>
+                <option value="02:00 PM - 03:00 PM">02:00 PM - 03:00 PM</option>
+                <option value="03:00 PM - 04:00 PM">03:00 PM - 04:00 PM</option>
+              </optgroup>
+              <optgroup label="Evening (04:00 PM - 08:00 PM)">
+                <option value="04:00 PM - 05:00 PM">04:00 PM - 05:00 PM</option>
+                <option value="05:00 PM - 06:00 PM">05:00 PM - 06:00 PM</option>
+                <option value="06:00 PM - 07:00 PM">06:00 PM - 07:00 PM</option>
+                <option value="07:00 PM - 08:00 PM">07:00 PM - 08:00 PM</option>
+              </optgroup>
+            </select>
+            <span class="error-msg">Please choose a time slot.</span>
+          </div>
+        </div>
+
+        <!-- Additional Notes -->
+        <div class="form-group">
+          <label for="additionalNotes">Any Special Instructions or Request (Optional)</label>
+          <input type="text" id="additionalNotes" name="additionalNotes" placeholder="e.g. Call before arrival, wheelchair access needed, etc.">
+        </div>
+      </section>
+
+      <!-- Submit Button -->
+      <div class="submit-wrapper">
+        <button type="submit" id="submitBtn" class="btn-primary">
+          <span class="btn-text">Submit Enquiry & Send to Doctor</span>
+          <span class="btn-spinner">
+            <svg class="spinner-svg" viewBox="0 0 24 24"><circle class="spinner-path" cx="12" cy="12" r="10" fill="none" stroke-width="3"></circle></svg>
+            Submitting...
+          </span>
+        </button>
+        <p class="privacy-note">🔒 Your medical data is strictly confidential and transmitted securely to The Urban Physio medical team.</p>
+      </div>
+    </form>
+
+    <!-- Footer -->
+    <footer class="form-footer">
+      <p>© 2026 The Urban Physio. Healthcare & Rehabilitation Care Network.</p>
+      <p>Official Website: <a href="https://theurbanphysio.com" target="_blank" rel="noopener">theurbanphysio.com</a> | Mon – Sat, 8:00 AM – 8:00 PM IST</p>
+    </footer>
+  </main>
+
+  <!-- Success Modal Popup -->
+  <div id="successModal" class="modal-overlay" hidden>
+    <div class="modal-card">
+      <div class="success-icon-wrap">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      </div>
+      <h2>Enquiry Submitted Successfully!</h2>
+      <p class="modal-subtext">Thank you, <strong id="modalPatientName">Patient</strong>. Your consultation enquiry has been delivered to Dr. / The Urban Physio medical team via email.</p>
+      <div class="modal-summary">
+        <div class="summary-item">
+          <span>Preferred Date & Day:</span>
+          <strong id="modalDateDay">-</strong>
+        </div>
+        <div class="summary-item">
+          <span>Slot & Mode:</span>
+          <strong id="modalSlotMode">-</strong>
+        </div>
+      </div>
+      <p class="modal-followup">Our care coordinator will contact you at <strong id="modalPhone">-</strong> shortly to confirm your booking.</p>
+      <button type="button" id="closeModalBtn" class="btn-secondary">Submit Another Enquiry</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
