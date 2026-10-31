@@ -1,8 +1,6 @@
 /**
  * Cloudflare Pages Function: /api/send-enquiry
- * Supports both:
- * 1. Twilio Direct Comms API (TWILIO_ACCOUNT_SID + TWILIO_AUTH_TOKEN)
- * 2. Twilio SendGrid API (SENDGRID_API_KEY)
+ * Handles patient enquiry form submission and delivers email via Twilio API
  */
 
 export async function onRequestPost(context) {
@@ -16,17 +14,16 @@ export async function onRequestPost(context) {
   };
 
   try {
-    const data = await request.json();
+    const data = await request.json().catch(() => null);
 
-    // 1. Validation
-    if (!data.fullName || !data.phone || !data.email) {
+    if (!data || !data.fullName || !data.phone || !data.email) {
       return new Response(
         JSON.stringify({ success: false, message: 'Missing required patient details.' }),
-        { status: 400, headers }
+        { status: 200, headers }
       );
     }
 
-    // 2. Environment Variables
+    // Environment Variables
     const TWILIO_ACCOUNT_SID = env.TWILIO_ACCOUNT_SID;
     const TWILIO_AUTH_TOKEN = env.TWILIO_AUTH_TOKEN;
     const SENDGRID_API_KEY = env.SENDGRID_API_KEY;
@@ -34,7 +31,6 @@ export async function onRequestPost(context) {
     const TO_EMAIL = env.TO_EMAIL || 'hrideshdutt@gmail.com';
     const FROM_EMAIL = env.FROM_EMAIL || 'support@theurbanphysio.com';
 
-    // Check credentials
     const hasTwilioComms = Boolean(TWILIO_ACCOUNT_SID && TWILIO_AUTH_TOKEN);
     const hasSendGrid = Boolean(SENDGRID_API_KEY);
 
@@ -42,16 +38,14 @@ export async function onRequestPost(context) {
       return new Response(
         JSON.stringify({
           success: false,
-          message: 'Twilio credentials not configured in Cloudflare. Please set TWILIO_ACCOUNT_SID & TWILIO_AUTH_TOKEN in Pages Settings.'
+          message: 'Twilio credentials missing. Please set TWILIO_ACCOUNT_SID & TWILIO_AUTH_TOKEN in Cloudflare Pages Settings > Environment Variables.'
         }),
-        { status: 500, headers }
+        { status: 200, headers }
       );
     }
 
     const cleanPhone = (data.phone || '').replace(/[^0-9]/g, '').slice(-10);
     const whatsappLink = `https://wa.me/91${cleanPhone}?text=Hello%20${encodeURIComponent(data.fullName)}%2C%20regarding%20your%20consultation%20enquiry%20at%20The%20Urban%20Physio...`;
-
-    // 3. Email Subject & HTML Template
     const subject = `🩺 New Enquiry: ${data.fullName} - ${data.concernCategory} (${data.preferredDate})`;
 
     const emailHtml = `
@@ -91,7 +85,6 @@ export async function onRequestPost(context) {
         </div>
 
         <div class="content">
-          <!-- 1. Patient Details -->
           <div class="section-title">1. Patient Personal Details</div>
           <table class="info-table">
             <tr>
@@ -112,7 +105,6 @@ export async function onRequestPost(context) {
             </tr>
           </table>
 
-          <!-- 2. Address Details -->
           <div class="section-title">2. Full Address Details</div>
           <table class="info-table">
             <tr>
@@ -129,7 +121,6 @@ export async function onRequestPost(context) {
             </tr>
           </table>
 
-          <!-- 3. Medical Problem & Health History -->
           <div class="section-title">3. Medical Problem & Health History</div>
           <table class="info-table">
             <tr>
@@ -158,7 +149,6 @@ export async function onRequestPost(context) {
             </tr>
           </table>
 
-          <!-- 4. Preferred Appointment -->
           <div class="section-title">4. Appointment Booking Request</div>
           <div class="highlight-box">
             <p style="margin: 0 0 6px; font-size: 15px;"><strong>📅 Date & Day:</strong> ${escapeHtml(data.preferredDate)} (${escapeHtml(data.preferredDay)})</p>
@@ -182,11 +172,9 @@ export async function onRequestPost(context) {
     </html>
     `;
 
-    // 4. Send Email
     let apiResponse;
 
     if (hasTwilioComms) {
-      // Use Twilio Direct Comms API (Account SID + Auth Token)
       const basicAuth = 'Basic ' + btoa(`${TWILIO_ACCOUNT_SID}:${TWILIO_AUTH_TOKEN}`);
       const twilioPayload = {
         from: {
@@ -211,7 +199,6 @@ export async function onRequestPost(context) {
         body: JSON.stringify(twilioPayload)
       });
     } else {
-      // Fallback: SendGrid API
       const sendgridPayload = {
         personalizations: [{ to: [{ email: TO_EMAIL, name: 'The Urban Physio' }], subject: subject }],
         from: { email: FROM_EMAIL, name: 'The Urban Physio' },
@@ -239,21 +226,22 @@ export async function onRequestPost(context) {
       );
     } else {
       const errText = await apiResponse.text();
-      console.error('Twilio API Error:', apiResponse.status, errText);
       return new Response(
         JSON.stringify({
           success: false,
           message: `Twilio delivery failed (Status ${apiResponse.status})`,
           details: errText
         }),
-        { status: 502, headers }
+        { status: 200, headers }
       );
     }
   } catch (error) {
-    console.error('Server Error:', error);
     return new Response(
-      JSON.stringify({ success: false, message: 'Internal server error occurred.' }),
-      { status: 500, headers }
+      JSON.stringify({
+        success: false,
+        message: 'Server error: ' + (error.message || 'Unknown error')
+      }),
+      { status: 200, headers }
     );
   }
 }
