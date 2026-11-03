@@ -56,22 +56,22 @@ export async function onRequestPost(context) {
       <style>
         body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #f4f6f8; margin: 0; padding: 20px; color: #1e293b; }
         .wrapper { max-width: 650px; margin: 0 auto; background: #ffffff; border-radius: 12px; overflow: hidden; border: 1px solid #e2e8f0; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
-        .header { background: linear-gradient(135deg, #0d9488 0%, #0f766e 100%); color: #ffffff; padding: 24px 30px; }
+        .header { background: linear-gradient(135deg, #ea580c 0%, #c2410c 100%); color: #ffffff; padding: 24px 30px; }
         .header h1 { margin: 0 0 6px; font-size: 22px; font-weight: 700; }
         .header p { margin: 0; font-size: 14px; opacity: 0.9; }
-        .badge { display: inline-block; background: #ccfbf1; color: #0f766e; font-size: 11px; font-weight: bold; padding: 3px 8px; border-radius: 99px; text-transform: uppercase; margin-bottom: 8px; }
+        .badge { display: inline-block; background: #ffedd5; color: #9a3412; font-size: 11px; font-weight: bold; padding: 3px 8px; border-radius: 99px; text-transform: uppercase; margin-bottom: 8px; }
         .content { padding: 24px 30px; }
-        .section-title { font-size: 14px; text-transform: uppercase; letter-spacing: 0.05em; color: #0d9488; font-weight: 700; margin: 20px 0 10px; border-bottom: 2px solid #f0fdfa; padding-bottom: 4px; }
+        .section-title { font-size: 14px; text-transform: uppercase; letter-spacing: 0.05em; color: #ea580c; font-weight: 700; margin: 20px 0 10px; border-bottom: 2px solid #fff7ed; padding-bottom: 4px; }
         .section-title:first-child { margin-top: 0; }
         .info-table { width: 100%; border-collapse: collapse; margin-bottom: 12px; }
         .info-table td { padding: 8px 10px; font-size: 14px; border-bottom: 1px solid #f1f5f9; }
         .info-table td.label { font-weight: 600; color: #64748b; width: 35%; background: #f8fafc; }
         .info-table td.value { color: #0f172a; }
-        .highlight-box { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 14px 16px; margin: 16px 0; }
+        .highlight-box { background: #fff7ed; border: 1px solid #fed7aa; border-radius: 8px; padding: 14px 16px; margin: 16px 0; }
         .pain-pill { display: inline-block; padding: 3px 10px; border-radius: 99px; font-weight: bold; font-size: 13px; background: #fef3c7; color: #92400e; }
         .actions { margin-top: 24px; text-align: center; }
         .btn { display: inline-block; padding: 10px 20px; font-size: 14px; font-weight: 600; text-decoration: none; border-radius: 6px; margin: 4px; }
-        .btn-call { background: #0d9488; color: #ffffff !important; }
+        .btn-call { background: #ea580c; color: #ffffff !important; }
         .btn-whatsapp { background: #25d366; color: #ffffff !important; }
         .footer { background: #f8fafc; padding: 16px 30px; text-align: center; font-size: 12px; color: #94a3b8; border-top: 1px solid #e2e8f0; }
       </style>
